@@ -18,3 +18,19 @@ jobs:
       - run: npm ci
       - run: npm run format
       - run: npm run lint
+
+build:
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: "20"
+        cache: "npm"
+    - run: npm ci
+    # Build frontend (Vite)
+    - run: npm run build --workspace=frontend # Adjust if your workspace name differs
+    # Build backend (Express)
+    - run: npm run build --workspace=backend
+    # Optional: TypeScript compile check
+    - run: npx tsc --noEmit
