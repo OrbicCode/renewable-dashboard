@@ -2,10 +2,10 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/server.ts",
   "scripts": {
-    "start": "dist/server.js",
-    "dev": "ts-node src/server.ts",
+    "start": "node dist/server.js",
+    "dev": "tsx src/server.ts",
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --ext .ts,.js",
@@ -28,7 +28,7 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",
     "prettier": "3.6.2",
-    "ts-node": "^10.9.2",
+    "tsx": "^4.20.6",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.46.1"
   }
