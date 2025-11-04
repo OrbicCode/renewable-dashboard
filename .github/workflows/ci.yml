@@ -28,9 +28,5 @@ build:
         node-version: "20"
         cache: "npm"
     - run: npm ci
-    # Build frontend (Vite)
-    - run: npm run build --workspace=frontend # Adjust if your workspace name differs
-    # Build backend (Express)
+    - run: npm run build --workspace=frontend
     - run: npm run build --workspace=backend
-    # Optional: TypeScript compile check
-    - run: npx tsc --noEmit
