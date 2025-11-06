@@ -1,7 +1,7 @@
 {
   "extends": ["@tsconfig/node22/tsconfig.json", "../tsconfig.json"],
   "compilerOptions": {
-    "rootDir": "..",
+    "rootDir": "src",
     "outDir": "dist",
     "types": ["node", "express", "cors"]
   },
