@@ -17,7 +17,8 @@
   "type": "module",
   "dependencies": {
     "express": "^5.1.0",
-    "pg": "^8.16.3"
+    "pg": "^8.16.3",
+    "shared": "file:../shared"
   },
   "devDependencies": {
     "@eslint/js": "^9.37.0",
