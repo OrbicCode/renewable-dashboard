@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "start": "npm run start --workspace=backend",
-    "dev": "npm run dev --workspace=frontend & npm run dev --workspace=backend",
+    "dev": "concurrently \"npm run dev --workspace=frontend\" \"npm run dev --workspace=backend\"",
     "build": "npm run build --workspaces",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky",
@@ -33,6 +33,7 @@
   "license": "ISC",
   "type": "module",
   "devDependencies": {
+    "concurrently": "^9.2.1",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.6"
   }
