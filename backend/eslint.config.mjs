@@ -5,6 +5,7 @@ import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 
 export default defineConfig([
   {
+    ignores: ['dist/**'],
     languageOptions: {
       parser: '@typescript-eslint/parser',
       parserOptions: {
