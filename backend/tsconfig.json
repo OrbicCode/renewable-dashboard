@@ -3,7 +3,7 @@
   "compilerOptions": {
     "rootDir": "..",
     "outDir": "dist",
-    "types": ["node", "express"]
+    "types": ["node", "express", "cors"]
   },
   "include": ["src/**/*", "*.mjs"],
   "exclude": ["node_modules", "dist"]
