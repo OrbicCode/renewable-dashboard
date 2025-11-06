@@ -1,2 +1,2 @@
-export * from './liveIntensity';
-export * from './liveGenMix';
+export * from './liveIntensity.js';
+export * from './liveGenMix.js';
