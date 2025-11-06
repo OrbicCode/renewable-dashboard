@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { GenMixData } from '../../../shared-types/src/liveGenMix.js';
-import { IntensityDataArray } from '../../../shared-types/src/liveIntensity.js';
+import { IntensityDataArray } from '../types/liveIntensity.js';
+import { GenMixData } from '../types/liveGenMix.js';
 
 export async function getLiveIntensity(req: Request, res: Response): Promise<void> {
   try {
