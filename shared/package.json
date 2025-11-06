@@ -9,6 +9,8 @@
   ],
   "scripts": {
     "build": "tsc",
+    "format": "echo hello format",
+    "lint": "echo hello lint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
