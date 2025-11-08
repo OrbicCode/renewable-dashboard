@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import type { IntensityData } from '@shared/types';
+import FigureDisplay from './components/FigureDisplay/FigureDisplay';
 
 function App() {
   const [data, setData] = useState<IntensityData | null>(null);
@@ -16,10 +17,13 @@ function App() {
     }
     fetchData();
   }, []);
+
+  const intensityFigure = data ? data.intensity : null;
   return (
     <>
       <div>
         <p>{data ? data.intensity.index : null}</p>
+        <FigureDisplay title="Intensity" figure={intensityFigure} />
       </div>
     </>
   );
