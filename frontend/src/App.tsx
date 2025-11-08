@@ -8,6 +8,7 @@ function App() {
   const [intensityData, setIntensityData] = useState<IntensityData | null>(null);
   const [genMixData, setGenMixData] = useState<GenMix | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [fetchError, setError] = useState<string>('');
 
   useEffect(() => {
     async function fetchIntensity() {
@@ -18,6 +19,7 @@ function App() {
         setIntensityData(data);
         setIsLoading(false);
       } catch (error) {
+        setError('Error getting intensity data');
         console.error(error);
       }
     }
@@ -33,6 +35,7 @@ function App() {
         setGenMixData(data);
         setIsLoading(false);
       } catch (error) {
+        setError('Error getting generationmix data');
         console.error(error);
       }
     }
@@ -61,6 +64,7 @@ function App() {
                 : null
             }
             isLoading={isLoading}
+            fetchError={fetchError}
           />
           <FigureDisplay
             title="Renewable Energy Percentage"
@@ -68,6 +72,7 @@ function App() {
               genMixData ? { figureNumber: renewablePercentage, figureText: 'GW/h' } : null
             }
             isLoading={isLoading}
+            fetchError={fetchError}
           />
         </div>
       </div>
