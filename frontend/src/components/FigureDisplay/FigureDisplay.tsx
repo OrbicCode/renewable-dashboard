@@ -11,6 +11,7 @@ interface FigureDisplayProps {
   figureData?: FigureData | null;
   isLoading: boolean;
   fetchError: string;
+  dataType: string;
 }
 
 export default function FigureDisplay({
@@ -18,6 +19,7 @@ export default function FigureDisplay({
   figureData,
   isLoading,
   fetchError,
+  dataType,
 }: FigureDisplayProps): JSX.Element {
   if (fetchError) {
     return <div>{fetchError}</div>;
@@ -26,10 +28,14 @@ export default function FigureDisplay({
     return <div>Loading...</div>;
   }
   return (
-    <div>
+    <div className={styles.container}>
       <h3 className={styles.title}>{title}</h3>
-      <p className={styles.figure}>
-        {figureData?.figureNumber} {`(${figureData?.figureText})`}
+      <p className={styles.figureNumber}>
+        {figureData?.figureNumber}
+        <span>
+          {' '}
+          {dataType === 'genmix' ? figureData?.figureText : `(${figureData?.figureText})`}
+        </span>
       </p>
     </div>
   );

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import type { GenMix, IntensityData } from '@shared/types';
 import FigureDisplay from './components/FigureDisplay/FigureDisplay';
+import FigureDisplaySeparator from './components/FigureDisplaySeparator/FigureDisplaySeparator';
 
 function App() {
   // Add Error State
@@ -52,7 +53,7 @@ function App() {
     <>
       <div>
         <p>{intensityData ? intensityData.intensity.index : null}</p>
-        <div>
+        <div className="figure_display_bar">
           <FigureDisplay
             title="Intensity"
             figureData={
@@ -65,15 +66,19 @@ function App() {
             }
             isLoading={isLoading}
             fetchError={fetchError}
+            dataType="default"
           />
+          <FigureDisplaySeparator />
           <FigureDisplay
-            title="Renewable Energy Percentage"
+            title="Renewable %"
             figureData={
               genMixData ? { figureNumber: renewablePercentage, figureText: 'GW/h' } : null
             }
             isLoading={isLoading}
             fetchError={fetchError}
+            dataType="genmix"
           />
+          <FigureDisplaySeparator />
         </div>
       </div>
     </>
