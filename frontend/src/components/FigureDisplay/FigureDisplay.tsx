@@ -12,8 +12,7 @@ export default function FigureDisplay({ title, figure }: FigureDisplayProps): JS
     <div>
       <h3 className={styles.title}>{title}</h3>
       <p className={styles.figure}>
-        {figure?.actual}
-        {`(${figure?.index})`}
+        {figure?.actual} {`(${figure?.index})`}
       </p>
     </div>
   );
