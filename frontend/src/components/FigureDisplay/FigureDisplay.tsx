@@ -1,18 +1,30 @@
 import styles from './FigureDisplay.module.css';
 import type { JSX } from 'react';
-import type { Intensity } from '@shared/types';
+
+type FigureData = {
+  figureNumber: number | null;
+  figureText: string | null;
+};
 
 interface FigureDisplayProps {
   title: string;
-  figure: Intensity | null;
+  figureData?: FigureData | null;
+  isLoading: boolean;
 }
 
-export default function FigureDisplay({ title, figure }: FigureDisplayProps): JSX.Element {
+export default function FigureDisplay({
+  title,
+  figureData,
+  isLoading,
+}: FigureDisplayProps): JSX.Element {
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
   return (
     <div>
       <h3 className={styles.title}>{title}</h3>
       <p className={styles.figure}>
-        {figure?.actual} {`(${figure?.index})`}
+        {figureData?.figureNumber} {`(${figureData?.figureText})`}
       </p>
     </div>
   );
