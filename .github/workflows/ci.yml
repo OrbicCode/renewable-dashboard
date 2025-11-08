@@ -28,5 +28,6 @@ jobs:
           node-version: "20"
           cache: "npm"
       - run: npm ci
-      - run: npm run build --workspace=frontend
+      - run: npm run build --workspace=shared
       - run: npm run build --workspace=backend
+      - run: npm run build --workspace=frontend
