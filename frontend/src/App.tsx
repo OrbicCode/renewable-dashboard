@@ -52,7 +52,6 @@ function App() {
   return (
     <>
       <div>
-        <p>{intensityData ? intensityData.intensity.index : null}</p>
         <div className="figure_display_bar">
           <FigureDisplay
             title="Intensity"
@@ -66,7 +65,7 @@ function App() {
             }
             isLoading={isLoading}
             fetchError={fetchError}
-            dataType="default"
+            dataType="intensity"
           />
           <FigureDisplaySeparator />
           <FigureDisplay
@@ -79,6 +78,21 @@ function App() {
             dataType="genmix"
           />
           <FigureDisplaySeparator />
+
+          <FigureDisplay
+            title="Intensity"
+            figureData={
+              intensityData
+                ? {
+                    figureNumber: intensityData.intensity.actual,
+                    figureText: intensityData.intensity.index,
+                  }
+                : null
+            }
+            isLoading={isLoading}
+            fetchError={fetchError}
+            dataType="intensity"
+          />
         </div>
       </div>
     </>

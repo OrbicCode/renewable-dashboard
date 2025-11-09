@@ -29,14 +29,18 @@ export default function FigureDisplay({
   }
   return (
     <div className={styles.container}>
-      <h3 className={styles.title}>{title}</h3>
-      <p className={styles.figureNumber}>
-        {figureData?.figureNumber}
-        <span>
-          {' '}
-          {dataType === 'genmix' ? figureData?.figureText : `(${figureData?.figureText})`}
-        </span>
-      </p>
+      <div>
+        <h3 className={styles.title}>{title}</h3>
+        <p className={styles.figureNumber}>
+          {figureData?.figureNumber}
+          <span
+            className={dataType === 'intensity' ? styles.figureTextIntensity : styles.figureText}
+          >
+            {' '}
+            {dataType === 'genmix' ? figureData?.figureText : `(${figureData?.figureText})`}
+          </span>
+        </p>
+      </div>
     </div>
   );
 }
