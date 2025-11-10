@@ -3,13 +3,14 @@ import './App.css';
 import type { GenMix, IntensityData } from '@shared/types';
 import FigureDisplay from './components/FigureDisplay/FigureDisplay';
 import FigureDisplaySeparator from './components/FigureDisplaySeparator/FigureDisplaySeparator';
+import ChartCard from './components/ChartCard/ChartCard';
+import GenMixDoughnut from './components/GenMixDoughnut/GenMixDoughnut';
 
 function App() {
-  // Add Error State
   const [intensityData, setIntensityData] = useState<IntensityData | null>(null);
   const [genMixData, setGenMixData] = useState<GenMix | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [fetchError, setError] = useState<string>('');
+  const [fetchError, setFetchError] = useState<string>('');
 
   useEffect(() => {
     async function fetchIntensity() {
@@ -20,7 +21,7 @@ function App() {
         setIntensityData(data);
         setIsLoading(false);
       } catch (error) {
-        setError('Error getting intensity data');
+        setFetchError('Error getting intensity data');
         console.error(error);
       }
     }
@@ -36,7 +37,7 @@ function App() {
         setGenMixData(data);
         setIsLoading(false);
       } catch (error) {
-        setError('Error getting generationmix data');
+        setFetchError('Error getting generationmix data');
         console.error(error);
       }
     }
@@ -51,49 +52,50 @@ function App() {
 
   return (
     <>
-      <div>
-        <div className="figure_display_bar">
-          <FigureDisplay
-            title="Intensity"
-            figureData={
-              intensityData
-                ? {
-                    figureNumber: intensityData.intensity.actual,
-                    figureText: intensityData.intensity.index,
-                  }
-                : null
-            }
-            isLoading={isLoading}
-            fetchError={fetchError}
-            dataType="intensity"
-          />
-          <FigureDisplaySeparator />
-          <FigureDisplay
-            title="Renewable %"
-            figureData={
-              genMixData ? { figureNumber: renewablePercentage, figureText: 'GW/h' } : null
-            }
-            isLoading={isLoading}
-            fetchError={fetchError}
-            dataType="genmix"
-          />
-          <FigureDisplaySeparator />
+      <div className="figure_display_bar">
+        <FigureDisplay
+          title="Intensity"
+          figureData={
+            intensityData
+              ? {
+                  figureNumber: intensityData.intensity.actual,
+                  figureText: intensityData.intensity.index,
+                }
+              : null
+          }
+          isLoading={isLoading}
+          fetchError={fetchError}
+          dataType="intensity"
+        />
+        <FigureDisplaySeparator />
+        <FigureDisplay
+          title="Renewable %"
+          figureData={genMixData ? { figureNumber: renewablePercentage, figureText: 'GW/h' } : null}
+          isLoading={isLoading}
+          fetchError={fetchError}
+          dataType="genmix"
+        />
+        <FigureDisplaySeparator />
 
-          <FigureDisplay
-            title="Intensity"
-            figureData={
-              intensityData
-                ? {
-                    figureNumber: intensityData.intensity.actual,
-                    figureText: intensityData.intensity.index,
-                  }
-                : null
-            }
-            isLoading={isLoading}
-            fetchError={fetchError}
-            dataType="intensity"
-          />
-        </div>
+        <FigureDisplay
+          title="Intensity"
+          figureData={
+            intensityData
+              ? {
+                  figureNumber: intensityData.intensity.actual,
+                  figureText: intensityData.intensity.index,
+                }
+              : null
+          }
+          isLoading={isLoading}
+          fetchError={fetchError}
+          dataType="intensity"
+        />
+      </div>
+      <div className="chart_grid">
+        <ChartCard>
+          <GenMixDoughnut data={genMixData} />
+        </ChartCard>
       </div>
     </>
   );

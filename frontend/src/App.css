@@ -2,5 +2,8 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border: 1px solid green;
+}
+
+.chart_grid {
+  margin-block: 20px;
 }
