@@ -48,7 +48,7 @@ export default function GenMixDoughnut({ data }: GenMixDoughnutProps): JSX.Eleme
       datalabels: {
         color: '#000000',
         formatter(value) {
-          return value + '%';
+          return value > 4 ? value + '%' : null;
         },
       },
     },
