@@ -48,6 +48,7 @@ function App() {
     ? genMixData.generationmix
         .filter((fuelType) => ['biomass', 'hydro', 'wind', 'solar'].includes(fuelType.fuel))
         .reduce((acc, curr) => acc + curr.perc, 0)
+        .toFixed(2)
     : null;
 
   return (
@@ -70,7 +71,9 @@ function App() {
         <FigureDisplaySeparator />
         <FigureDisplay
           title="Renewable %"
-          figureData={genMixData ? { figureNumber: renewablePercentage, figureText: 'GW/h' } : null}
+          figureData={
+            genMixData ? { figureNumber: Number(renewablePercentage), figureText: 'GW/h' } : null
+          }
           isLoading={isLoading}
           fetchError={fetchError}
           dataType="genmix"

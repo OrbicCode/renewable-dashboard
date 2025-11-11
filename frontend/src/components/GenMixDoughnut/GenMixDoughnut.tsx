@@ -1,6 +1,7 @@
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Legend, Tooltip } from 'chart.js';
 import type { ChartData, ChartOptions } from 'chart.js';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 import type { JSX } from 'react';
 import type { GenMix } from '@shared/types';
 
@@ -8,7 +9,7 @@ interface GenMixDoughnutProps {
   data: GenMix | null;
 }
 
-ChartJS.register(ArcElement, Legend, Tooltip);
+ChartJS.register(ArcElement, Legend, Tooltip, ChartDataLabels);
 
 export default function GenMixDoughnut({ data }: GenMixDoughnutProps): JSX.Element {
   const chartData: ChartData<'doughnut'> = {
@@ -42,6 +43,12 @@ export default function GenMixDoughnut({ data }: GenMixDoughnutProps): JSX.Eleme
       tooltip: {
         callbacks: {
           label: (context) => ` ${context.raw}%`,
+        },
+      },
+      datalabels: {
+        color: '#000000',
+        formatter(value) {
+          return value + '%';
         },
       },
     },
