@@ -1,9 +1,10 @@
 .container {
   width: fit-content;
-  max-width: 500px;
   height: fit-content;
   border-radius: 25px;
-  margin: 0 auto;
   padding: 1em;
   background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

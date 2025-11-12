@@ -52,7 +52,7 @@ function App() {
     : null;
 
   return (
-    <>
+    <main>
       <div className="figure_display_bar">
         <FigureDisplay
           title="Intensity"
@@ -100,7 +100,7 @@ function App() {
           <GenMixDoughnut data={genMixData} />
         </ChartCard>
       </div>
-    </>
+    </main>
   );
 }
 
