@@ -96,7 +96,7 @@ function App() {
         />
       </div>
       <div className="chart_grid">
-        <ChartCard>
+        <ChartCard isLoading={isLoading}>
           <GenMixDoughnut data={genMixData} />
         </ChartCard>
       </div>

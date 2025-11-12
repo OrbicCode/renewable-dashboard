@@ -22,14 +22,7 @@ export default function GenMixDoughnut({ data }: GenMixDoughnutProps): JSX.Eleme
         data: data
           ? data.generationmix.filter((fuelType) => fuelType.perc).map((fuelType) => fuelType.perc)
           : [],
-        backgroundColor: [
-          'rgba(75, 192, 192, 0.6)', // Wind
-          'rgba(255, 205, 86, 0.6)', // Solar
-          'rgba(54, 162, 235, 0.6)', // Hydro
-          'rgba(153, 102, 255, 0.6)', // Biomass
-          'rgba(255, 99, 132, 0.6)',
-          'rgba(0, 255, 81, 0.6)', // Others
-        ],
+        backgroundColor: ['#20331a', '#33512a', '#446c37', '#558745', '#66a253', '#7cb36b'],
         hoverOffset: 4,
       },
     ],
@@ -44,13 +37,24 @@ export default function GenMixDoughnut({ data }: GenMixDoughnutProps): JSX.Eleme
       chart.update('none');
     },
     plugins: {
+      legend: {
+        labels: {
+          font: {
+            family: 'Montserrat Alternates',
+          },
+        },
+      },
       tooltip: {
         callbacks: {
           label: (context) => ` ${context.raw}%`,
         },
       },
       datalabels: {
-        color: '#000000',
+        color: '#ffffff',
+        font: {
+          size: 10,
+          family: 'Montserrat Alternates',
+        },
         formatter(value) {
           return value > 4 ? value + '%' : null;
         },
@@ -73,7 +77,10 @@ export default function GenMixDoughnut({ data }: GenMixDoughnutProps): JSX.Eleme
               return '';
             },
             drawTime: 'afterDraw',
-            font: [{ size: 40 }, { size: 50 }, { size: 30 }],
+            font: [
+              { size: 20, family: 'Montserrat Alternates' },
+              { size: 25, family: 'Montserrat Alternates' },
+            ],
             color: ({ chart }) => {
               const active = chart.getActiveElements();
               if (active.length > 0) {
