@@ -5,6 +5,7 @@ import ChartDataLabels from 'chartjs-plugin-datalabels';
 import annotationPlugin from 'chartjs-plugin-annotation';
 import type { JSX } from 'react';
 import type { GenMix } from '@shared/types';
+import styles from './GenMixDoughnut.module.css';
 
 interface GenMixDoughnutProps {
   data: GenMix | null;
@@ -97,5 +98,9 @@ export default function GenMixDoughnut({ data }: GenMixDoughnutProps): JSX.Eleme
     },
   };
 
-  return <div>{data ? <Doughnut data={chartData} options={options} /> : null}</div>;
+  return (
+    <div className={styles.container}>
+      {data ? <Doughnut data={chartData} options={options} /> : null}
+    </div>
+  );
 }

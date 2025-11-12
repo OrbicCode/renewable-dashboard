@@ -1,7 +1,7 @@
 .bar {
-  height: 80px;
+  height: 80%;
   width: 3px;
   background: black;
-  border: 1px solid black;
+  border: 2px solid black;
   border-radius: 25px;
 }
