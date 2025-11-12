@@ -2,6 +2,7 @@ import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Legend, Tooltip } from 'chart.js';
 import type { ChartData, ChartOptions } from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
+import annotationPlugin from 'chartjs-plugin-annotation';
 import type { JSX } from 'react';
 import type { GenMix } from '@shared/types';
 
@@ -9,7 +10,7 @@ interface GenMixDoughnutProps {
   data: GenMix | null;
 }
 
-ChartJS.register(ArcElement, Legend, Tooltip, ChartDataLabels);
+ChartJS.register(ArcElement, Legend, Tooltip, ChartDataLabels, annotationPlugin);
 
 export default function GenMixDoughnut({ data }: GenMixDoughnutProps): JSX.Element {
   const chartData: ChartData<'doughnut'> = {
@@ -39,6 +40,9 @@ export default function GenMixDoughnut({ data }: GenMixDoughnutProps): JSX.Eleme
     animation: {
       animateRotate: true,
     },
+    onHover: (_event, _activeElements, chart) => {
+      chart.update('none');
+    },
     plugins: {
       tooltip: {
         callbacks: {
@@ -49,6 +53,38 @@ export default function GenMixDoughnut({ data }: GenMixDoughnutProps): JSX.Eleme
         color: '#000000',
         formatter(value) {
           return value > 4 ? value + '%' : null;
+        },
+      },
+      annotation: {
+        annotations: {
+          dLabel: {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            type: 'doughnutLabel' as any,
+            content: ({ chart }) => {
+              const active = chart.getActiveElements();
+              if (active.length > 0) {
+                const index = active[0].index;
+                const value = chart.data.datasets[0].data[index];
+                const label =
+                  ((chart.data.labels?.[index] as string) || '').charAt(0).toUpperCase() +
+                  ((chart.data.labels?.[index] as string) || '').slice(1);
+                return [`${label}: `, `${value}%`];
+              }
+              return '';
+            },
+            drawTime: 'afterDraw',
+            font: [{ size: 40 }, { size: 50 }, { size: 30 }],
+            color: ({ chart }) => {
+              const active = chart.getActiveElements();
+              if (active.length > 0) {
+                const index = active[0].index;
+                const bgColors = chart.data.datasets[0].backgroundColor as string[];
+                const bgColor = bgColors?.[index] || 'black';
+                return ['black', bgColor];
+              }
+              return ['black', 'black'];
+            },
+          },
         },
       },
     },
