@@ -5,6 +5,7 @@ import FigureDisplay from './components/FigureDisplay/FigureDisplay';
 import FigureDisplaySeparator from './components/FigureDisplaySeparator/FigureDisplaySeparator';
 import ChartCard from './components/ChartCard/ChartCard';
 import GenMixDoughnut from './components/GenMixDoughnut/GenMixDoughnut';
+import Header from './components/Header/Header';
 
 function App() {
   const [intensityData, setIntensityData] = useState<IntensityData | null>(null);
@@ -53,6 +54,7 @@ function App() {
 
   return (
     <main>
+      <Header />
       <div className="figure_display_bar">
         <FigureDisplay
           title="Intensity"
