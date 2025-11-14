@@ -1,3 +1,4 @@
+import ChartHeader from '../ChartHeader/ChartHeader';
 import styles from './ChartCard.module.css';
 import type { JSX } from 'react';
 
@@ -10,5 +11,10 @@ export default function ChartCard({ isLoading, children }: ChartCardProps): JSX.
   if (isLoading) {
     return <div>Loading...</div>;
   }
-  return <div className={styles.container}>{children}</div>;
+  return (
+    <div className={styles.container}>
+      <ChartHeader />
+      {children}
+    </div>
+  );
 }
