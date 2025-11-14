@@ -1,7 +1,10 @@
 import { Request, Response } from 'express';
-import type { IntensityDataArray, GenMixData } from '@shared/types';
+import type { IntensityDataArray, GenMixData, IntensityData, GenMix } from '@shared/types';
 
-export async function getLiveIntensity(req: Request, res: Response): Promise<void> {
+export async function getLiveIntensity(
+  req: Request,
+  res: Response<IntensityData | { error: string }>
+): Promise<void> {
   try {
     const response = await fetch('https://api.carbonintensity.org.uk/intensity');
     if (!response.ok) {
@@ -20,7 +23,10 @@ export async function getLiveIntensity(req: Request, res: Response): Promise<voi
   }
 }
 
-export async function getLiveGenMix(req: Request, res: Response): Promise<void> {
+export async function getLiveGenMix(
+  req: Request,
+  res: Response<GenMix | { error: string }>
+): Promise<void> {
   try {
     const response = await fetch('https://api.carbonintensity.org.uk/generation');
     if (!response.ok) {
