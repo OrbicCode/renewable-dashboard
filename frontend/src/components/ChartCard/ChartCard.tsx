@@ -6,15 +6,21 @@ interface ChartCardProps {
   isLoading: boolean;
   children: JSX.Element;
   title: string;
+  filterPanelToggle: () => void;
 }
 
-export default function ChartCard({ isLoading, children, title }: ChartCardProps): JSX.Element {
+export default function ChartCard({
+  isLoading,
+  children,
+  title,
+  filterPanelToggle,
+}: ChartCardProps): JSX.Element {
   if (isLoading) {
     return <div>Loading...</div>;
   }
   return (
     <div className={styles.container}>
-      <ChartHeader title={title} />
+      <ChartHeader title={title} filterPanelToggle={filterPanelToggle} />
       {children}
     </div>
   );

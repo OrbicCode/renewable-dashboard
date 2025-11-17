@@ -6,12 +6,14 @@ import FigureDisplaySeparator from './components/FigureDisplaySeparator/FigureDi
 import ChartCard from './components/ChartCard/ChartCard';
 import GenMixDoughnut from './components/GenMixDoughnut/GenMixDoughnut';
 import Header from './components/Header/Header';
+import FilterPanel from './components/FilterPanel/FilterPanel';
 
 function App() {
   const [intensityData, setIntensityData] = useState<IntensityData | null>(null);
   const [genMixData, setGenMixData] = useState<GenMix | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [fetchError, setFetchError] = useState<string>('');
+  const [isFilterPanelOpen, setIsFilterPanelOpen] = useState<boolean>(false);
 
   useEffect(() => {
     async function fetchIntensity() {
@@ -51,6 +53,10 @@ function App() {
         .reduce((acc, curr) => acc + curr.perc, 0)
         .toFixed(2)
     : null;
+
+  function handleFilterPanelToggle() {
+    setIsFilterPanelOpen(!isFilterPanelOpen);
+  }
 
   return (
     <main>
@@ -98,10 +104,15 @@ function App() {
         />
       </div>
       <div className="chart_grid">
-        <ChartCard isLoading={isLoading} title={'Generation Mix'}>
+        <ChartCard
+          isLoading={isLoading}
+          title={'Generation Mix'}
+          filterPanelToggle={handleFilterPanelToggle}
+        >
           <GenMixDoughnut data={genMixData} />
         </ChartCard>
       </div>
+      {isFilterPanelOpen ? <FilterPanel /> : null}
     </main>
   );
 }
