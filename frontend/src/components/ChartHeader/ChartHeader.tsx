@@ -2,15 +2,19 @@ import styles from './ChartHeader.module.css';
 import InfoOutlineIcon from '@mui/icons-material/InfoOutline';
 import TuneIcon from '@mui/icons-material/Tune';
 
-export default function ChartHeader() {
+interface ChartHeaderProps {
+  title: string;
+}
+
+export default function ChartHeader({ title }: ChartHeaderProps) {
   return (
     <div className={styles.container}>
-      <h2 style={{ margin: '0' }}>Title</h2>
+      <h2 className={styles.title}>{title}</h2>
       <div>
-        <button>
+        <button className={styles.btn}>
           <TuneIcon fontSize="small" />
         </button>
-        <button>
+        <button className={styles.btn}>
           <InfoOutlineIcon fontSize="small" />
         </button>
       </div>

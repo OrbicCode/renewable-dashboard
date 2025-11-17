@@ -5,15 +5,16 @@ import type { JSX } from 'react';
 interface ChartCardProps {
   isLoading: boolean;
   children: JSX.Element;
+  title: string;
 }
 
-export default function ChartCard({ isLoading, children }: ChartCardProps): JSX.Element {
+export default function ChartCard({ isLoading, children, title }: ChartCardProps): JSX.Element {
   if (isLoading) {
     return <div>Loading...</div>;
   }
   return (
     <div className={styles.container}>
-      <ChartHeader />
+      <ChartHeader title={title} />
       {children}
     </div>
   );
