@@ -9,10 +9,10 @@ interface FilterPanelProps {
 export default function FilterPanel({ onFilterPanelClose, isFilterPanelOpen }: FilterPanelProps) {
   return (
     <aside className={`${styles.container} ${isFilterPanelOpen ? styles.open : ''}`}>
-      <h2>Filters</h2>
       <button onClick={onFilterPanelClose}>
         <Close />
       </button>
+      <h2>Filters</h2>
     </aside>
   );
 }

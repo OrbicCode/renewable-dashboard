@@ -1,9 +1,9 @@
 .container {
+  display: flex;
+  flex-direction: column;
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  padding: 1em;
+  inset: 0;
   background: var(--primary-bg-color);
   transform: translateX(100%);
   transition: transform 0.5s ease-in-out;
