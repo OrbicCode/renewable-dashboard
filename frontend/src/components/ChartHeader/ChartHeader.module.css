@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.title {
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}

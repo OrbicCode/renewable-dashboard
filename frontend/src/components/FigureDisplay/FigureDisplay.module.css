@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: 0.75rem;
+  font-weight: 300;
+  margin: 0;
+}
+
+.figureNumber {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.figureText {
+  font-size: 0.875rem;
+}
+
+.figureTextIntensity {
+  font-size: 0.525rem;
+}

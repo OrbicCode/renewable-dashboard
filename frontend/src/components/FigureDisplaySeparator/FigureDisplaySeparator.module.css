@@ -1,0 +1,7 @@
+.bar {
+  height: 80%;
+  width: 3px;
+  background: black;
+  border: 2px solid black;
+  border-radius: 25px;
+}
