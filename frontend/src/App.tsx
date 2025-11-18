@@ -112,7 +112,12 @@ function App() {
           <GenMixDoughnut data={genMixData} />
         </ChartCard>
       </div>
-      {isFilterPanelOpen ? <FilterPanel /> : null}
+      {isFilterPanelOpen ? (
+        <FilterPanel
+          onFilterPanelClose={handleFilterPanelToggle}
+          isFilterPanelOpen={isFilterPanelOpen}
+        />
+      ) : null}
     </main>
   );
 }

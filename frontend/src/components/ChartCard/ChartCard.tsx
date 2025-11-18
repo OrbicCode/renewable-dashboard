@@ -20,7 +20,7 @@ export default function ChartCard({
   }
   return (
     <div className={styles.container}>
-      <ChartHeader title={title} filterPanelToggle={filterPanelToggle} />
+      <ChartHeader title={title} onFilterToggle={filterPanelToggle} />
       {children}
     </div>
   );
