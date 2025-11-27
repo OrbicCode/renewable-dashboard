@@ -6,7 +6,7 @@ export async function getTenIntensities(req: Request, res: Response) {
     const data = await historicalDataServices.getTenIntensities();
     res.json(data);
   } catch (error) {
-    console.error('Error at Controller', error);
-    res.status(500).json({ error: error });
+    console.error('Controller Error: ', error);
+    res.status(500).json({ error: `Controller Error: ${error}` });
   }
 }
