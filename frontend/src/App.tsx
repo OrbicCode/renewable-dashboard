@@ -69,7 +69,7 @@ function App() {
               ? {
                   figureNumber:
                     intensityData.intensity.actual === null
-                      ? 'No Data'
+                      ? intensityData.intensity.forecast
                       : intensityData.intensity.actual,
                   figureText: intensityData.intensity.index,
                 }
@@ -97,7 +97,7 @@ function App() {
               ? {
                   figureNumber:
                     intensityData.intensity.actual === null
-                      ? 'No Data'
+                      ? intensityData.intensity.forecast
                       : intensityData.intensity.actual,
                   figureText: intensityData.intensity.index,
                 }
