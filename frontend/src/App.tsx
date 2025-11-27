@@ -67,7 +67,10 @@ function App() {
           figureData={
             intensityData
               ? {
-                  figureNumber: intensityData.intensity.actual,
+                  figureNumber:
+                    intensityData.intensity.actual === null
+                      ? 'No Data'
+                      : intensityData.intensity.actual,
                   figureText: intensityData.intensity.index,
                 }
               : null
@@ -87,13 +90,15 @@ function App() {
           dataType="genmix"
         />
         <FigureDisplaySeparator />
-
         <FigureDisplay
           title="Intensity"
           figureData={
             intensityData
               ? {
-                  figureNumber: intensityData.intensity.actual,
+                  figureNumber:
+                    intensityData.intensity.actual === null
+                      ? 'No Data'
+                      : intensityData.intensity.actual,
                   figureText: intensityData.intensity.index,
                 }
               : null
