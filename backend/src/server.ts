@@ -2,12 +2,16 @@ import express, { Express, Request, Response } from 'express';
 import { carbonApiRoutes } from './routes/carbonApiRoutes.js';
 import { Server } from 'http';
 import cors from 'cors';
+import { historicalDataRoutes } from './routes/historicalDataRoutes.js';
 
 const app: Express = express();
 const PORT = 3000;
 
 app.use(cors());
+
 app.use('/api', carbonApiRoutes);
+app.use('/historical', historicalDataRoutes);
+
 app.use((req: Request, res: Response) => {
   res.status(404).json({ message: 'endpoint not found' });
 });
