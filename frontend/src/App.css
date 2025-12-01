@@ -1,5 +1,4 @@
 main {
-  min-width: fit-content;
 }
 
 .figure_display_bar {
@@ -10,12 +9,11 @@ main {
 }
 
 .chart_grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  justify-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 2em;
   padding: 1em;
-  min-width: fit-content;
 }
 
 @media (min-width: 600px) {

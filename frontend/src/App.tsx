@@ -133,6 +133,7 @@ function App() {
           isLoading={isLoading}
           title={'Generation Mix'}
           filterPanelToggle={handleFilterPanelToggle}
+          chartType={''}
         >
           <GenMixDoughnut data={genMixData} />
         </ChartCard>
@@ -140,6 +141,7 @@ function App() {
           isLoading={isLoading}
           title="Historical Intensity Data"
           filterPanelToggle={handleFilterPanelToggle}
+          chartType="line"
         >
           <HistoricalIntensityLine data={historicalIntensityData} />
         </ChartCard>

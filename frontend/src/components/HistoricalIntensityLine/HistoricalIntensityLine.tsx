@@ -11,7 +11,6 @@ import {
   plugins,
 } from 'chart.js';
 import type { HistoricalIntensity } from '@shared/types';
-import styles from './HistoricalIntensityLine.module.css';
 
 interface HistoricalIntensityLineProps {
   data: HistoricalIntensity[] | null;
@@ -62,9 +61,5 @@ export default function HistoricalIntensityLine({ data }: HistoricalIntensityLin
     },
   };
 
-  return (
-    <div className={styles.container}>
-      <Line data={chartData} options={options} />
-    </div>
-  );
+  return <Line data={chartData} options={options} />;
 }
