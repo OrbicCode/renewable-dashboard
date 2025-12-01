@@ -13,6 +13,15 @@ main {
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
+  gap: 2em;
   padding: 1em;
   min-width: fit-content;
+}
+
+@media (min-width: 600px) {
+  .figure_display_bar {
+    justify-content: flex-start;
+    gap: 4em;
+    padding-left: 3em;
+  }
 }
