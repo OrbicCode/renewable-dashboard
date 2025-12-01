@@ -5,7 +5,9 @@ export async function getTenIntensities() {
   try {
     const tenIntensities = await pool.query(`
     SELECT * FROM historical_intensity
-    LIMIT 10
+    WHERE datetime <= (NOW() - interval '2 days')
+    ORDER BY datetime DESC
+    LIMIT 48
     `);
     return tenIntensities.rows.map((intensity: HistoricalIntensity) => {
       return {
