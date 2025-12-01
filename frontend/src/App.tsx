@@ -24,6 +24,9 @@ function App() {
       try {
         setIsLoading(true);
         const response = await fetch('http://localhost:3000/api/intensity');
+        if (!response.ok) {
+          throw new Error(`Error fetching, status: ${response.status}`);
+        }
         const data = (await response.json()) as IntensityData;
         setIntensityData(data);
         setIsLoading(false);
@@ -40,6 +43,9 @@ function App() {
       try {
         setIsLoading(true);
         const response = await fetch('http://localhost:3000/api/generationmix');
+        if (!response.ok) {
+          throw new Error(`Error fetching, status: ${response.status}`);
+        }
         const data = await response.json();
         setGenMixData(data);
         setIsLoading(false);
@@ -56,6 +62,9 @@ function App() {
       try {
         setIsLoading(true);
         const response = await fetch('http://localhost:3000/historical/get-ten');
+        if (!response.ok) {
+          throw new Error(`Error fetching, status: ${response.status}`);
+        }
         const data = await response.json();
         setHistoricalIntensityData(data);
         setIsLoading(false);
