@@ -5,7 +5,8 @@ export async function getTenIntensities() {
   try {
     const tenIntensities = await pool.query(`
     SELECT * FROM historical_intensity
-    WHERE datetime <= (NOW() - interval '2 days')
+    WHERE datetime <= NOW()
+      AND forecast IS NOT NULL
     ORDER BY datetime DESC
     LIMIT 48
     `);
