@@ -2,7 +2,7 @@ import styles from './FigureDisplay.module.css';
 import type { JSX } from 'react';
 
 type FigureData = {
-  figureNumber: number | null;
+  figureNumber: number | 'No Data' | null;
   figureText: string | null;
 };
 

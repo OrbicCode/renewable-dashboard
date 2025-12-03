@@ -7,6 +7,7 @@ interface ChartCardProps {
   children: JSX.Element;
   title: string;
   filterPanelToggle: () => void;
+  chartType: string | '';
 }
 
 export default function ChartCard({
@@ -14,12 +15,15 @@ export default function ChartCard({
   children,
   title,
   filterPanelToggle,
+  chartType,
 }: ChartCardProps): JSX.Element {
   if (isLoading) {
     return <div>Loading...</div>;
   }
   return (
-    <div className={styles.container}>
+    <div
+      className={`${styles.container} ${chartType === 'line' ? styles.maxLarge : styles.maxSmall}`}
+    >
       <ChartHeader title={title} onFilterToggle={filterPanelToggle} />
       {children}
     </div>

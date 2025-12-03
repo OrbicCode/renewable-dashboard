@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS historical_intensity (
+  id SERIAL PRIMARY KEY,
+  datetime TIMESTAMP NOT NULL,
+  forecast NUMERIC NOT NULL,
+  actual NUMERIC NOT NULL,
+  index VARCHAR(50) NOT NULL
+);
