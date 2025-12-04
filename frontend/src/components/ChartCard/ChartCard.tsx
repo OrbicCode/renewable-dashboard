@@ -9,6 +9,7 @@ interface ChartCardProps {
   filterPanelToggle: (chartId: string) => void;
   chartType: string | '';
   chartId: string;
+  fetchError: string | null;
 }
 
 export default function ChartCard({
@@ -18,9 +19,13 @@ export default function ChartCard({
   filterPanelToggle,
   chartType,
   chartId,
+  fetchError,
 }: ChartCardProps): JSX.Element {
   if (isLoading) {
     return <div>Loading...</div>;
+  }
+  if (fetchError) {
+    return <div>{fetchError}</div>;
   }
   return (
     <div
