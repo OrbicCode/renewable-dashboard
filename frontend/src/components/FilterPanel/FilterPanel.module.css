@@ -12,3 +12,9 @@
 .open {
   transform: translateX(0);
 }
+
+@media (min-width: 600px) {
+  .container {
+    position: unset;
+  }
+}
