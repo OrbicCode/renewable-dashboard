@@ -25,10 +25,11 @@
     inset: unset;
     right: 0;
     top: 75px;
-    bottom: 75px;
+    bottom: 10px;
     width: 200px;
     border-radius: 500px;
     background: white;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
   }
   .open {
     right: 20px;
@@ -36,5 +37,6 @@
 
   .closeBtn {
     align-self: unset;
+    margin-top: 1em;
   }
 }
