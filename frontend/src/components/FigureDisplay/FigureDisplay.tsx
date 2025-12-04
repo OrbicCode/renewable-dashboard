@@ -10,7 +10,7 @@ interface FigureDisplayProps {
   title: string;
   figureData?: FigureData | null;
   isLoading: boolean;
-  fetchError: string;
+  fetchError: string | null;
   dataType: string;
 }
 
