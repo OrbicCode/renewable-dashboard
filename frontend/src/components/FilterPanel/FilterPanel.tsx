@@ -12,7 +12,6 @@ export default function FilterPanel({
   isFilterPanelOpen,
   activeFilterPanel,
 }: FilterPanelProps) {
-  console.log(activeFilterPanel);
   return (
     <aside className={`${styles.container} ${isFilterPanelOpen ? styles.open : ''}`}>
       <button onClick={onFilterPanelClose}>
