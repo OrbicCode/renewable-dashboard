@@ -3,6 +3,7 @@ import { carbonApiRoutes } from './routes/carbonApiRoutes.js';
 import { Server } from 'http';
 import cors from 'cors';
 import { historicalDataRoutes } from './routes/historicalDataRoutes.js';
+import './lib/historicalUpdater.js';
 
 const app: Express = express();
 const PORT = 3000;

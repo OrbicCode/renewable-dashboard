@@ -1,7 +1,7 @@
 import pool from '../dbConfig/dbConfig.js';
 import type { IntensityDataArray } from '@shared/types';
 
-async function intensityUpdater() {
+export async function intensityUpdater() {
   console.log('Updating historical intensity data...');
 
   const result = await pool.query(`
