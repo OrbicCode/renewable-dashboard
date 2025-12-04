@@ -18,6 +18,7 @@ function App() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [fetchError, setFetchError] = useState<string>('');
   const [isFilterPanelOpen, setIsFilterPanelOpen] = useState<boolean>(false);
+  const [activeFilterPanel, setActiveFilterPanel] = useState<string>('');
 
   useEffect(() => {
     async function fetchIntensity() {
@@ -83,8 +84,9 @@ function App() {
         .toFixed(2)
     : null;
 
-  function handleFilterPanelToggle() {
+  function handleFilterPanelToggle(chartId: string) {
     setIsFilterPanelOpen(!isFilterPanelOpen);
+    setActiveFilterPanel(chartId);
   }
 
   return (
@@ -143,6 +145,7 @@ function App() {
           title={'Generation Mix'}
           filterPanelToggle={handleFilterPanelToggle}
           chartType={''}
+          chartId="gen-mix"
         >
           <GenMixDoughnut data={genMixData} />
         </ChartCard>
@@ -151,13 +154,15 @@ function App() {
           title="Historical Intensity Data"
           filterPanelToggle={handleFilterPanelToggle}
           chartType="line"
+          chartId="hist-int-line"
         >
           <HistoricalIntensityLine data={historicalIntensityData} />
         </ChartCard>
       </div>
       <FilterPanel
-        onFilterPanelClose={handleFilterPanelToggle}
+        onFilterPanelClose={() => setIsFilterPanelOpen(false)}
         isFilterPanelOpen={isFilterPanelOpen}
+        activeFilterPanel={activeFilterPanel}
       />
     </main>
   );
