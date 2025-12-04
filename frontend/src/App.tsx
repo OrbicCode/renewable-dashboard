@@ -85,7 +85,10 @@ function App() {
     : null;
 
   function handleFilterPanelToggle(chartId: string) {
-    setIsFilterPanelOpen(!isFilterPanelOpen);
+    if (isFilterPanelOpen && activeFilterPanel !== chartId) {
+      setIsFilterPanelOpen(false);
+    }
+    setIsFilterPanelOpen(true);
     setActiveFilterPanel(chartId);
   }
 

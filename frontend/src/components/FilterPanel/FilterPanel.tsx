@@ -14,8 +14,8 @@ export default function FilterPanel({
 }: FilterPanelProps) {
   return (
     <aside className={`${styles.container} ${isFilterPanelOpen ? styles.open : ''}`}>
-      <button onClick={onFilterPanelClose}>
-        <Close />
+      <button className={styles.closeBtn} onClick={onFilterPanelClose}>
+        <Close fontSize="large" />
       </button>
       {activeFilterPanel === 'gen-mix' ? (
         <h2>Gen-mix Filters</h2>
