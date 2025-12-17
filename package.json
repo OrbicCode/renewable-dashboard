@@ -17,7 +17,8 @@
     "prepare": "husky",
     "lint": "npm run lint --workspaces",
     "format": "npm run format --workspaces",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "update": "tsx backend/src/lib/historicalUpdater.ts"
   },
   "lint-staged": {
     "frontend/**/*.{js,jsx,ts,tsx}": [
