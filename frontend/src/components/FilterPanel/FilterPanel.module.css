@@ -20,6 +20,12 @@
   border: none;
 }
 
+.arrowBtn {
+  display: none;
+  background: none;
+  border: none;
+}
+
 @media (min-width: 500px) {
   .container {
     inset: unset;
@@ -36,7 +42,12 @@
   }
 
   .closeBtn {
+    display: none;
+  }
+
+  .arrowBtn {
     align-self: unset;
     margin-top: 1em;
+    display: block;
   }
 }
