@@ -24,3 +24,16 @@ export async function getTenIntensities() {
     throw new Error(`Database Error: ${error}`);
   }
 }
+
+export async function getDateRange() {
+  try {
+    const result = await pool.query(`
+      SELECT MIN(datetime) AS min_date, MAX(datetime) AS max_date
+        FROM historical_intensity
+    `);
+    return result.rows[0];
+  } catch (error) {
+    console.error(error);
+    throw new Error(`Database Error: ${error}`);
+  }
+}
