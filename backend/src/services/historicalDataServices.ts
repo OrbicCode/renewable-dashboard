@@ -28,7 +28,7 @@ export async function getTenIntensities() {
 export async function getDateRange() {
   try {
     const result = await pool.query(`
-      SELECT MIN(datetime) AS min_date, MAX(datetime) AS max_date
+      SELECT MIN(datetime) AS min_date, Now() AS max_date
         FROM historical_intensity
     `);
     return result.rows[0];
