@@ -1,7 +1,7 @@
 import styles from './FilterPanel.module.css';
 import { Close } from '@mui/icons-material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import DateFilter from '../filters/DateFilter/DateFilter';
+import HistoricalIntensityFilterPanel from '../filters/HistoricalIntensityFilterPanel/HistoricalIntensityFilterPanel';
 
 interface FilterPanelProps {
   onFilterPanelClose: () => void;
@@ -26,8 +26,8 @@ export default function FilterPanel({
         <h2>Gen-mix Filters</h2>
       ) : activeFilterPanel === 'hist-int-line' ? (
         <>
-          <h2>Historical Intensity Filters Filters</h2>
-          <DateFilter />
+          <h2>Historical Intensity Filters</h2>
+          <HistoricalIntensityFilterPanel />
         </>
       ) : (
         <h2>Filters</h2>
