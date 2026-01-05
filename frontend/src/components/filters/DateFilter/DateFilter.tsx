@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
+import styles from './DateFilter.module.css';
 
 export default function DateFilter() {
   const [minDate, setMinDate] = useState('');
   const [maxDate, setMaxDate] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
 
   useEffect(() => {
     async function getDateRange() {
@@ -17,10 +20,53 @@ export default function DateFilter() {
     }
     getDateRange();
   }, []);
+
+  function handleStartDate(e: React.ChangeEvent<HTMLInputElement>) {
+    const { value } = e.target;
+    console.log(value);
+    if (endDate && value > endDate) {
+      setStartDate(endDate);
+    } else {
+      setStartDate(value);
+    }
+  }
+
+  function handleEndDate(e: React.ChangeEvent<HTMLInputElement>) {
+    const { value } = e.target;
+    console.log(value);
+    if (startDate && value < startDate) {
+      setEndDate(startDate);
+    } else {
+      setEndDate(value);
+    }
+  }
+  const effectiveStartMin = minDate;
+  const effectiveStartMax = endDate || maxDate; // can't pick start after end
+  const effectiveEndMin = startDate || minDate; // can't pick end before start
+  const effectiveEndMax = maxDate;
+
   return (
-    <>
-      <label>Start:</label>
-      <input type="date" min={minDate} max={maxDate} />
-    </>
+    <div className={styles.container}>
+      <div>
+        <label>Start:</label>
+        <input
+          type="date"
+          min={effectiveStartMin}
+          max={effectiveStartMax}
+          value={startDate}
+          onChange={handleStartDate}
+        />
+      </div>
+      <div>
+        <label>End:</label>
+        <input
+          type="date"
+          min={effectiveEndMin}
+          max={effectiveEndMax}
+          value={endDate}
+          onChange={handleEndDate}
+        />
+      </div>
+    </div>
   );
 }
