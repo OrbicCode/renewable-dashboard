@@ -1,6 +1,6 @@
 export async function getLiveGenMixData() {
   try {
-    const response = await fetch('http://localhost:3000/api/generationmix');
+    const response = await fetch('http://localhost:3000/live/generationmix');
     if (!response.ok) {
       throw new Error(`Error fetching, status: ${response.status}`);
     }

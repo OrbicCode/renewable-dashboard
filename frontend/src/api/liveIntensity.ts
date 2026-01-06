@@ -2,7 +2,7 @@ import type { IntensityData } from '@shared/types';
 
 export async function getLiveIntensity() {
   try {
-    const response = await fetch('http://localhost:3000/api/intensity');
+    const response = await fetch('http://localhost:3000/live/intensity');
     if (!response.ok) {
       throw new Error(`Error fetching, status: ${response.status}`);
     }
