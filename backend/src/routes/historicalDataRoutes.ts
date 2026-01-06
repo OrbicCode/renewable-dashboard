@@ -1,7 +1,13 @@
 import express from 'express';
-import { getDateRange, getTenIntensities } from '../controllers/historicalDataControllers.js';
+import {
+  getDateRange,
+  getRecentIntensities,
+  getFilteredIntensities,
+} from '../controllers/historicalDataControllers.js';
 
 export const historicalDataRoutes = express.Router();
 
-historicalDataRoutes.get('/get-ten', getTenIntensities);
+historicalDataRoutes.get('/get-intensities/recent', getRecentIntensities);
 historicalDataRoutes.get('/get-date-range', getDateRange);
+
+historicalDataRoutes.post('/get-intensities', getFilteredIntensities);
