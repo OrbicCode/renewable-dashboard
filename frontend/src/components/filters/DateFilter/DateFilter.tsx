@@ -1,11 +1,21 @@
 import { useState, useEffect } from 'react';
 import styles from './DateFilter.module.css';
 
-export default function DateFilter() {
-  const [minDate, setMinDate] = useState('');
-  const [maxDate, setMaxDate] = useState('');
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
+interface DateFilterProps {
+  setStartDate: (value: string) => void;
+  setEndDate: (value: string) => void;
+  startDate: string | '';
+  endDate: string | '';
+}
+
+export default function DateFilter({
+  setStartDate,
+  setEndDate,
+  startDate,
+  endDate,
+}: DateFilterProps) {
+  const [minDate, setMinDate] = useState<string>('');
+  const [maxDate, setMaxDate] = useState<string>('');
 
   useEffect(() => {
     async function getDateRange() {
@@ -21,28 +31,20 @@ export default function DateFilter() {
     getDateRange();
   }, []);
 
-  function handleStartDate(e: React.ChangeEvent<HTMLInputElement>) {
-    const { value } = e.target;
-    console.log(value);
-    if (endDate && value > endDate) {
-      setStartDate(endDate);
-    } else {
-      setStartDate(value);
-    }
-  }
+  const handleStartDate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    setStartDate(val);
+    if (endDate && val > endDate) setEndDate(val);
+  };
 
-  function handleEndDate(e: React.ChangeEvent<HTMLInputElement>) {
-    const { value } = e.target;
-    console.log(value);
-    if (startDate && value < startDate) {
-      setEndDate(startDate);
-    } else {
-      setEndDate(value);
-    }
-  }
+  const handleEndDate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    setEndDate(val);
+    if (startDate && val < startDate) setStartDate(val);
+  };
   const effectiveStartMin = minDate;
-  const effectiveStartMax = endDate || maxDate; // can't pick start after end
-  const effectiveEndMin = startDate || minDate; // can't pick end before start
+  const effectiveStartMax = endDate || maxDate;
+  const effectiveEndMin = startDate || minDate;
   const effectiveEndMax = maxDate;
 
   return (
