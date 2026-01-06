@@ -9,8 +9,9 @@ const app: Express = express();
 const PORT = 3000;
 
 app.use(cors());
+app.use(express.json());
 
-app.use('/api', carbonApiRoutes);
+app.use('/live', carbonApiRoutes);
 app.use('/historical', historicalDataRoutes);
 
 app.use((req: Request, res: Response) => {
